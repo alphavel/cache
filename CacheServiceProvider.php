@@ -2,7 +2,7 @@
 
 namespace Alphavel\Cache;
 
-use Alphavel\Core\ServiceProvider;
+use Alphavel\Framework\ServiceProvider;
 
 class CacheServiceProvider extends ServiceProvider
 {
