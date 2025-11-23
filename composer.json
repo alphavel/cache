@@ -1,6 +1,7 @@
 {
     "name": "alphavel/cache",
     "description": "Cache package for Alphavel Framework",
+    "version": "1.0.0",
     "type": "library",
     "keywords": ["cache", "redis", "memcached", "alphavel"],
     "license": "MIT",
