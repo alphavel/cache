@@ -1,37 +1,71 @@
 # Alphavel Cache
 
-Cache package for Alphavel Framework.
+> High-performance cache layer with Redis, File, and Memory drivers
 
-## Installation
+[![PHP Version](https://img.shields.io/badge/php-%3E%3D8.4-blue.svg)](https://php.net)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+
+---
+
+## ✨ Features
+
+- ⚡ **Multiple drivers** - Redis, File, Memory
+- 🔄 **Remember pattern** - Cache with fallback
+- ⏰ **TTL support** - Automatic expiration
+- 🎯 **Laravel-compatible** - Familiar API
+- 🚀 **Swoole-optimized** - Coroutine-safe
+
+## 📦 Installation
 
 ```bash
 composer require alphavel/cache
 ```
 
-## Configuration
-
-After installation, add these variables to your `.env` file:
+## ⚙️ Configuration
 
 ```env
 CACHE_DRIVER=redis
 
-# Redis Configuration
+# Redis
 REDIS_HOST=localhost
 REDIS_PORT=6379
 REDIS_PASSWORD=
 REDIS_DATABASE=0
 ```
 
-For Docker environments, update `REDIS_HOST` to match your service name (e.g., `redis`).
+For Docker: use service name (e.g., `REDIS_HOST=redis`)
 
-You can also use `CACHE_DRIVER=file` for file-based caching (no Redis required).
+## 🚀 Quick Start
 
-See `.env.example` in this package for a complete configuration template.
+```php
+use Cache;
 
-## Documentation
+// Set
+Cache::set('key', 'value', 3600);
 
-Visit [Alphavel Documentation](https://github.com/alphavel) for complete documentation.
+// Get
+$value = Cache::get('key');
 
-## License
+// Remember pattern
+$users = Cache::remember('users', 300, fn() => 
+    DB::table('users')->get()
+);
+
+// Delete
+Cache::delete('key');
+
+// Clear all
+Cache::flush();
+```
+
+## 📚 Documentation
+
+**Full documentation**: https://github.com/alphavel/documentation
+
+- [Getting Started](https://github.com/alphavel/documentation/blob/master/packages/cache/README.md)
+- [Drivers](https://github.com/alphavel/documentation/blob/master/packages/cache/drivers.md)
+- [Best Practices](https://github.com/alphavel/documentation/blob/master/packages/cache/best-practices.md)
+
+## 📄 License
 
 MIT License
